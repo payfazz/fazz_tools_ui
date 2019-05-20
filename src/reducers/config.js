@@ -1,4 +1,8 @@
-import { SET_TAB_SELECTED } from "../actions/config";
+import {
+  SET_TAB_SELECTED,
+  START_STREAMING_WS,
+  SET_WS_CONNECTION_STATUS
+} from "../actions/config";
 
 const INITIAL_STATE = {
   conn: "",
@@ -12,6 +16,16 @@ export default (state = INITIAL_STATE, action) => {
       return {
         ...state,
         tabSelected: action.payload
+      };
+    case START_STREAMING_WS:
+      return {
+        ...state,
+        conn: `127.0.0.1:${action.payload}`
+      };
+    case SET_WS_CONNECTION_STATUS:
+      return {
+        ...state,
+        isConnected: action.payload
       };
     default:
       return state;

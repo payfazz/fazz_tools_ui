@@ -1,10 +1,11 @@
-import React, { PureComponent } from "react";
+import React, { PureComponent, Fragment } from "react";
 import { Layout, Row, Menu } from "antd";
 import { connect } from "react-redux";
-import { setTabSelected } from "../../actions/config";
+import { setTabSelected, openConnectionWS } from "../../actions/config";
 import Header from "./header";
 import DebugPage from "../../pages/debug";
-import "../../styles/template.css";
+import "../../styles/container.css";
+import ConnectionInfo from "./connection_info";
 
 class Container extends PureComponent {
   state = {
@@ -15,6 +16,10 @@ class Container extends PureComponent {
   constructor() {
     super();
     this._defaultSelectedKeys = ["0"];
+  }
+
+  componentDidMount() {
+    this.props.openConnectionWS();
   }
 
   _onVisibleChange = () => {
@@ -52,38 +57,43 @@ class Container extends PureComponent {
 
   render() {
     return (
-      <Layout>
-        <Layout.Header className="header">
-          <Header />
-          <Row className="navbar">
-            <Menu
-              onClick={this._onTabSelected}
-              theme="light"
-              mode="horizontal"
-              defaultSelectedKeys={this._defaultSelectedKeys}
-            >
-              {this._renderMenuItem}
-            </Menu>
-          </Row>
-        </Layout.Header>
-        <Layout.Content className="content">
-          {this._renderContent}
-        </Layout.Content>
-        <DebugPage
-          visible={this.state.visible}
-          onVisibleChange={this._onVisibleChange}
-        />
-      </Layout>
+      <Fragment>
+        {!this.props.isConnected && <ConnectionInfo />}
+        <Layout>
+          <Layout.Header className="header">
+            <Header />
+            <Row className="navbar">
+              <Menu
+                onClick={this._onTabSelected}
+                theme="light"
+                mode="horizontal"
+                defaultSelectedKeys={this._defaultSelectedKeys}
+              >
+                {this._renderMenuItem}
+              </Menu>
+            </Row>
+          </Layout.Header>
+          <Layout.Content className="content">
+            {this._renderContent}
+          </Layout.Content>
+          <DebugPage
+            visible={this.state.visible}
+            onVisibleChange={this._onVisibleChange}
+          />
+        </Layout>
+      </Fragment>
     );
   }
 }
 
-const mapStateToProps = ({ config: { tabSelected } }) => ({
-  tabSelected
+const mapStateToProps = ({ config: { tabSelected, isConnected } }) => ({
+  tabSelected,
+  isConnected
 });
 
 const mapDispatchToProps = {
-  setTabSelected
+  setTabSelected,
+  openConnectionWS
 };
 
 export default connect(
