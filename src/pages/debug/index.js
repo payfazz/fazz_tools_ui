@@ -16,7 +16,7 @@ class DebugPage extends PureComponent {
         >
           <h1>helo</h1>
         </Drawer>
-        <FloatBtnDebugger onClick={this._onVisibleChange} />
+        <FloatBtnDebugger onClick={this.props.onVisibleChange} />
       </Fragment>
     );
   }
