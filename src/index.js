@@ -1,12 +1,32 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import React, { PureComponent } from "react";
+import { Provider } from "react-redux";
+import ReactDOM from "react-dom";
+import "antd/dist/antd.css";
+import store from "./utils/redux";
+import Container from "./components/container";
+import ContainerItem from "./components/container/container_item";
+import NetworkPage from "./pages/network";
+import CreateTypePage from "./pages/create_type";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+class App extends PureComponent {
+  render() {
+    return (
+      <Provider store={store}>
+        <Container>
+          <ContainerItem
+            label="Network"
+            tabIndex={"0"}
+            component={NetworkPage}
+          />
+          <ContainerItem
+            label="Create Type"
+            tabIndex={"1"}
+            component={CreateTypePage}
+          />
+        </Container>
+      </Provider>
+    );
+  }
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(<App />, document.getElementById("root"));
