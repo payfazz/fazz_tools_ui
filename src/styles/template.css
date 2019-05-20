@@ -1,0 +1,59 @@
+body {
+    min-height: 100vh;
+    background-color: #f0f2f5;
+}
+
+header {
+    z-index: 1;
+    width: 100%;
+    height: 72px;
+    position: fixed;
+    background-color: white !important;
+    box-shadow: 0 2px 8px #f0f1f2;
+}
+
+.header__logo {
+    overflow: hidden;
+    width: 40px;
+    height: 40px;
+}
+
+.header__content-right {
+    text-align: right;
+}
+
+.header__content-right__icon-setting {
+    font-size: 22px;
+}
+
+.navbar {
+    margin-top: 8px;
+}
+
+.content {
+    padding: 15px;
+    background-color: white;
+    min-height: 100vh;
+    margin: 118px 50px 0px 50px;
+}
+
+.float-btn-debugger {
+    top: 0px;
+    right: 4px;
+    bottom: 0px;
+    z-index: 1;
+    position: absolute;
+    display: flex;
+    align-items: center;
+}
+
+.float-btn-debugger__btn {
+    width: 80px;
+    color: white;
+    padding: 4px;
+    border-radius: 3px;
+    text-align: center;
+    background-color: #ee192d;
+    font-size: 12px;
+    box-shadow: 0px 1px 6px rgba(0,0,0,0.4);
+}
