@@ -50,12 +50,24 @@ header {
 .float-btn-debugger__btn {
     width: 80px;
     color: white;
-    padding: 4px;
+    padding: 6px;
     border-radius: 3px;
     text-align: center;
     background-color: #ee192d;
     font-size: 12px;
     box-shadow: 0px 1px 6px rgba(0,0,0,0.4);
+}
+
+.float-btn-debugger__btn--clear {
+    background-color: #229a84;
+}
+
+.float-btn-debugger__btn__icon {
+    font-size: 18px;
+}
+
+.float-btn-debugger__btn__text {
+    margin: 0px !important;
 }
 
 .connection-info {
