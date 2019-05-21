@@ -10,9 +10,9 @@ const createWebSocketServer = server => {
     const connection = request.accept(null, request.origin);
     connection.send(JSON.stringify({ connected: true }));
 
-    connection.on("message", ({ utf8Data: message, ...abc }) => {
+    connection.on("message", ({ utf8Data: message }) => {
       _ws.broadcast(message);
-    }); // const connection = request.accept(null, request.origin);
+    });
   });
 
   return _ws;
