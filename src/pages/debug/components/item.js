@@ -15,19 +15,30 @@ class DebugItem extends PureComponent {
 
     this._columns = [
       {
+        title: "Index",
+        rowKey: "index",
         key: "index",
-        name: "Index",
         dataIndex: "index"
       },
       {
+        title: "Data Type",
+        rowKey: "type",
         key: "type",
-        name: "Data Type",
         dataIndex: "type"
       },
       {
+        title: "Value",
         key: "value",
+        rowKey: "value",
         name: "Value",
-        dataIndex: "value"
+        dataIndex: "value",
+        render: data => {
+          if (this._isArray(data)) {
+            return <JSONView src={data} />;
+          }
+
+          return data;
+        }
       }
     ];
 
@@ -44,6 +55,7 @@ class DebugItem extends PureComponent {
         {
           index: "-",
           type,
+          key: new Date().getTime().toString(),
           value: this.props.text
         }
       ];
@@ -51,11 +63,12 @@ class DebugItem extends PureComponent {
       return;
     }
 
-    if (isArray(this.props.text)) {
+    if (this._isArray(this.props.text)) {
       this._dataSource = [
         {
           index: "-",
           type: "array",
+          key: new Date().getTime().toString(),
           value: this.props.text
         }
       ];
@@ -68,8 +81,9 @@ class DebugItem extends PureComponent {
       this._dataSource = this._dataSource.concat([
         {
           index,
+          key: new Date().getTime().toString(),
           type: (() => {
-            if (isArray(this.props.text[index])) {
+            if (this._isArray(this.props.text[index])) {
               return "array";
             }
 
@@ -90,13 +104,20 @@ class DebugItem extends PureComponent {
   };
 
   _displayAsTable = () => {
-    return <Table columns={this._columns} dataSource={data} />;
+    return (
+      <Table
+        columns={this._columns}
+        dataSource={this._dataSource}
+        pagination={false}
+        bordered={true}
+      />
+    );
   };
 
   render() {
     return (
       <Row>
-        {this.props.options.prefix != "" && (
+        {this.props.options.prefix !== "" && (
           <Col>
             <p className="debug-p" style={this.colorStyle}>
               {this.props.options.prefix}
@@ -108,9 +129,13 @@ class DebugItem extends PureComponent {
             return this._displayAsPlainText();
           }
 
+          if (this.props.showAs === LogDisplay.table) {
+            return this._displayAsTable();
+          }
+
           return null;
         })()}
-        {this.props.options.suffix != "" && (
+        {this.props.options.suffix !== "" && (
           <Col>
             <p className="debug-p" style={this.colorStyle}>
               {this.props.options.suffix}
@@ -132,6 +157,7 @@ class DebugItem extends PureComponent {
 }
 
 DebugItem.propTypes = {
+  id: PropTypes.string.isRequired,
   text: PropTypes.any.isRequired,
   type: PropTypes.string.isRequired,
   showAs: PropTypes.string.isRequired,

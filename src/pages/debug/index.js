@@ -17,7 +17,7 @@ class DebugPage extends PureComponent {
           onClose={this.props.onVisibleChange}
         >
           {this.props.logs.map(log => (
-            <DebugItem {...log} />
+            <DebugItem key={log.id} {...log} />
           ))}
         </Drawer>
         <FloatBtnDebugger onClick={this.props.onVisibleChange} />
@@ -32,19 +32,7 @@ DebugPage.propTypes = {
 };
 
 const mapStateToProps = ({ debug: { logs } }) => ({
-  logs: [
-    {
-      text: "kondel",
-      showAs: "plainText",
-      type: "text",
-      options: {
-        color: "red",
-        prefix: "kondel",
-        suffix: "ah",
-        showTimestamp: true
-      }
-    }
-  ]
+  logs
 });
 
 export default connect(mapStateToProps)(DebugPage);
