@@ -14,6 +14,8 @@ import {
 } from "../actions/config";
 import { webSocket } from "rxjs/webSocket";
 import store from "../utils/redux";
+import LogType from "../value/log_type";
+import { ADD_LOG, ADD_NETWORK } from "../actions/debug";
 
 export const openConnectionWSEpic = action$ =>
   action$.pipe(
@@ -25,6 +27,22 @@ export const openConnectionWSEpic = action$ =>
             return {
               type: SET_WS_CONNECTION_STATUS,
               payload: true
+            };
+          } else if (
+            resp.hasOwnProperty("type") &&
+            resp.type === LogType.TEXT
+          ) {
+            return {
+              type: ADD_LOG,
+              payload: resp
+            };
+          } else if (
+            resp.hasOwnProperty("type") &&
+            resp.type === LogType.NETWORK
+          ) {
+            return {
+              type: ADD_NETWORK,
+              payload: resp
             };
           }
 
