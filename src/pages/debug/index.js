@@ -17,7 +17,7 @@ class DebugPage extends PureComponent {
           onClose={this.props.onVisibleChange}
         >
           {this.props.logs.map(log => (
-            <DebugItem key={log.id} {...log} />
+            <DebugItem key={log._id} {...log} />
           ))}
         </Drawer>
         <FloatBtnDebugger onClick={this.props.onVisibleChange} />

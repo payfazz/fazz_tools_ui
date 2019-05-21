@@ -55,7 +55,7 @@ class DebugItem extends PureComponent {
         {
           index: "-",
           type,
-          key: new Date().getTime().toString(),
+          key: this.props._id,
           value: this.props.text
         }
       ];
@@ -68,7 +68,7 @@ class DebugItem extends PureComponent {
         {
           index: "-",
           type: "array",
-          key: new Date().getTime().toString(),
+          key: this.props._id,
           value: this.props.text
         }
       ];
@@ -77,11 +77,12 @@ class DebugItem extends PureComponent {
     }
 
     this._dataSource = [];
+    const now = new Date().getTime();
     for (let index in this.props.text) {
       this._dataSource = this._dataSource.concat([
         {
           index,
-          key: new Date().getTime().toString(),
+          key: `${this.props._id}_${now}`,
           type: (() => {
             if (this._isArray(this.props.text[index])) {
               return "array";
