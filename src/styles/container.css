@@ -76,3 +76,10 @@ header {
     text-align: center;
     color: white;
 }
+
+/* override default class */
+.ant-menu-item-selected {
+    color: #229a84 !important;
+    font-weight: bold;
+    border-bottom: 2px solid #229a84 !important;
+}
