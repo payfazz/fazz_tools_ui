@@ -17,7 +17,8 @@ class Header extends PureComponent {
         <Col span={6}>
           <img
             className="header__logo"
-            src="https://www.payfazz.com/wp-content/uploads/2017/03/Icon-Payfazz.jpeg"
+            src={`${process.env.PUBLIC_URL}assets/images/jpg/payfazz.jpeg`}
+            alt="payfazz logo"
           />
         </Col>
         <Col span={18} className="header__content-right">
