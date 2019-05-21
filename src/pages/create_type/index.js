@@ -1,5 +1,11 @@
 import React from "react";
+import ComingSoon from "../../components/coming_soon";
+import "../../styles/create_type.css";
 
-const CreateTypePage = () => <h1>Coming Soon</h1>;
+const CreateTypePage = () => (
+  <div className="container-create-type">
+    <ComingSoon />
+  </div>
+);
 
 export default CreateTypePage;
