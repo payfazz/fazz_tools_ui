@@ -10,7 +10,9 @@ const NotFound = () => (
         height={200}
         alt={"no data"}
       />
-      <h1>No Data Found ...</h1>
+      <h1>
+        <b>No Data Found ...</b>
+      </h1>
     </Col>
   </Row>
 );
