@@ -30,7 +30,7 @@ export const openConnectionWSEpic = action$ =>
             };
           } else if (
             resp.hasOwnProperty("type") &&
-            resp.type === LogType.TEXT
+            resp.type === LogType.Text
           ) {
             return {
               type: ADD_LOG,
@@ -38,7 +38,7 @@ export const openConnectionWSEpic = action$ =>
             };
           } else if (
             resp.hasOwnProperty("type") &&
-            resp.type === LogType.NETWORK
+            resp.type === LogType.Network
           ) {
             return {
               type: ADD_NETWORK,
