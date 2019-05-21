@@ -11,7 +11,7 @@ export default (state = INITIAL_STATE, action) => {
     case READ_LOG:
       return {
         ...state,
-        readLogCount: state.logs.length - state.readLogCount
+        readLogCount: state.logs.length
       };
     case ADD_LOG:
       return {
