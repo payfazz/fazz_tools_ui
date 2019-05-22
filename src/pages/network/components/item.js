@@ -115,7 +115,7 @@ class NetworkItem extends PureComponent {
             Request Params
           </Col>
           <Col className="container-network__item__section-body">
-            <Row type="flex">{this._renderRequestParams()}</Row>
+            {this._renderRequestParams()}
           </Col>
         </Col>
         <Col>
