@@ -62,7 +62,7 @@ class DebugItem extends PureComponent {
       return;
     }
 
-    if (this._isArray(this.props.text)) {
+    if (isArray(this.props.text)) {
       this._dataSource = [
         {
           index: "-",
