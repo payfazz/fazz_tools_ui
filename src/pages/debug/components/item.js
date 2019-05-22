@@ -3,6 +3,7 @@ import { Row, Col, Divider, Table } from "antd";
 import JSONView from "react-json-view";
 import PropTypes from "prop-types";
 import moment from "moment";
+import { isArray } from "../../../utils/helpers";
 import LogDisplay from "../../../value/log_display";
 import "../../../styles/debug.css";
 
@@ -33,7 +34,7 @@ class DebugItem extends PureComponent {
         name: "Value",
         dataIndex: "value",
         render: data => {
-          if (this._isArray(data)) {
+          if (isArray(data)) {
             return <JSONView src={data} />;
           }
 
@@ -45,12 +46,10 @@ class DebugItem extends PureComponent {
     this._createDataSource();
   }
 
-  _isArray = data => typeof data === "object" && Array.isArray(data);
-
   _createDataSource = () => {
-    const exlcludeTypes = ["string", "number", "boolean"];
+    const excludeTypes = ["string", "number", "boolean"];
     const type = typeof this.props.text;
-    if (exlcludeTypes.indexOf(type) > -1) {
+    if (excludeTypes.indexOf(type) > -1) {
       this._dataSource = [
         {
           index: "-",
@@ -84,7 +83,7 @@ class DebugItem extends PureComponent {
           index,
           key: `${this.props._id}_${now}`,
           type: (() => {
-            if (this._isArray(this.props.text[index])) {
+            if (isArray(this.props.text[index])) {
               return "array";
             }
 
