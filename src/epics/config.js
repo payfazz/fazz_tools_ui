@@ -20,8 +20,10 @@ import { ADD_LOG, ADD_NETWORK } from "../actions/debug";
 export const openConnectionWSEpic = action$ =>
   action$.pipe(
     ofType(START_STREAMING_WS),
-    concatMap(action =>
-      webSocket(`ws://127.0.0.1:${action.payload}`).pipe(
+    concatMap(() =>
+      webSocket(
+        `ws://127.0.0.1:${process.env.REACT_APP_FAZZ_DEBUGGER_PORT}`
+      ).pipe(
         map(resp => {
           if (resp.hasOwnProperty("connected")) {
             return {

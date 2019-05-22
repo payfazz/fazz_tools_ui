@@ -8,9 +8,8 @@ export const setTabSelected = tabSelected => ({
   payload: tabSelected
 });
 
-export const openConnectionWS = (port = 8080) => ({
-  type: START_STREAMING_WS,
-  payload: port
+export const openConnectionWS = () => ({
+  type: START_STREAMING_WS
 });
 
 export const setWSConnectionStatus = isConnected => ({
