@@ -1,7 +1,8 @@
-import React, { Fragment } from "react";
+import React, { Fragment, PureComponent } from "react";
 import { Drawer } from "antd";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { readLog } from "../../actions/debug";
 import FloatBtnDebugger from "./components/float_btn_debugger";
 import DebugItem from "./components/item";
 import NotFound from "../../components/not_found";
@@ -13,27 +14,44 @@ const _styleNoData = {
   alignItems: "center"
 };
 
-const DebugPage = props => (
-  <Fragment>
-    <Drawer
-      placement="right"
-      closable={false}
-      width={480}
-      visible={props.visible}
-      onClose={props.onVisibleChange}
-      bodyStyle={props.logs.length === 0 ? _styleNoData : null}
-    >
-      {(() => {
-        if (props.logs.length > 0) {
-          return props.logs.map(log => <DebugItem key={log._id} {...log} />);
-        }
+class DebugPage extends PureComponent {
+  componentDidUpdate(prevProps) {
+    if (prevProps.logs.length < this.props.logs.length && this.props.visible) {
+      this.props.readLog();
+    }
+  }
 
-        return <NotFound />;
-      })()}
-    </Drawer>
-    <FloatBtnDebugger onClick={props.onVisibleChange} />
-  </Fragment>
-);
+  _renderLogs = () => {
+    if (this.props.logs.length > 0) {
+      return this.props.logs.map(log => <DebugItem key={log._id} {...log} />);
+    }
+
+    return <NotFound />;
+  };
+
+  _onClick = () => {
+    this.props.onVisibleChange();
+    this.props.readLog();
+  };
+
+  render() {
+    return (
+      <Fragment>
+        <Drawer
+          placement="right"
+          closable={false}
+          width={480}
+          visible={this.props.visible}
+          onClose={this.props.onVisibleChange}
+          bodyStyle={this.props.logs.length === 0 ? _styleNoData : null}
+        >
+          {this._renderLogs()}
+        </Drawer>
+        <FloatBtnDebugger onClick={this._onClick} />
+      </Fragment>
+    );
+  }
+}
 
 DebugPage.propTypes = {
   visible: PropTypes.bool.isRequired,
@@ -44,4 +62,11 @@ const mapStateToProps = ({ debug: { logs } }) => ({
   logs
 });
 
-export default connect(mapStateToProps)(DebugPage);
+const mapDispatchToProps = {
+  readLog
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DebugPage);
