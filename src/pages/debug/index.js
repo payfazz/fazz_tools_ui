@@ -23,7 +23,9 @@ class DebugPage extends PureComponent {
 
   _renderLogs = () => {
     if (this.props.logs.length > 0) {
-      return this.props.logs.map(log => <DebugItem key={log._id} {...log} />);
+      return this.props.logs.map(log => (
+        <DebugItem id={log._id} key={log._id} {...log} />
+      ));
     }
 
     return <NotFound />;
