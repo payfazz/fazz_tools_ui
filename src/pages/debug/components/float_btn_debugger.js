@@ -15,7 +15,7 @@ class FloatBtnDebugger extends PureComponent {
       <div className="float-btn-debugger">
         <a href="javascript:void(0)" onClick={this._onToggleDrawer}>
           <div
-            className={`float-btn-debugger__btn ${this.props.unreadLogCount ==
+            className={`float-btn-debugger__btn ${this.props.unreadLogCount ===
               0 && "float-btn-debugger__btn--clear"}`}
           >
             <Icon

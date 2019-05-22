@@ -1,4 +1,4 @@
-import React, { Fragment, PureComponent } from "react";
+import React, { Fragment } from "react";
 import { Drawer } from "antd";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
