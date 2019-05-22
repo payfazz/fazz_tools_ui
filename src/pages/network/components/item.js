@@ -45,7 +45,11 @@ class NetworkItem extends PureComponent {
       return this.props.body;
     }
 
-    return <JSONView src={this.props.body} />;
+    if (type === "object") {
+      return <JSONView src={this.props.body} />;
+    }
+
+    return null;
   };
 
   _renderResponseHeader = () => {
@@ -71,7 +75,11 @@ class NetworkItem extends PureComponent {
       return this.props.responseBody;
     }
 
-    return <JSONView src={this.props.responseBody} />;
+    if (type === "object") {
+      return <JSONView src={this.props.responseBody} />;
+    }
+
+    return null;
   };
 
   render() {
