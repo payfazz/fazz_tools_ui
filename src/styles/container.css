@@ -1,11 +1,11 @@
 body {
-    min-height: 100vh;
     background-color: #f0f2f5;
 }
 
 header {
     z-index: 2;
     width: 100%;
+    padding: 0px !important;
     height: 72px;
     position: fixed;
     background-color: white !important;
@@ -27,13 +27,16 @@ header {
 }
 
 .navbar {
-    margin-top: 8px;
+    margin-top: 0px;
+}
+
+.ant-menu {
+    padding: 0 50px !important;
 }
 
 .content {
     padding: 15px;
     background-color: white;
-    min-height: 100vh;
     margin: 118px 50px 0px 50px;
 }
 
@@ -42,7 +45,7 @@ header {
     right: 4px;
     bottom: 0px;
     z-index: 1;
-    position: absolute;
+    position: fixed;
     display: flex;
     align-items: center;
 }

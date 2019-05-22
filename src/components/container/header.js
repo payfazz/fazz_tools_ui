@@ -3,7 +3,7 @@ import { Row, Col } from "antd";
 
 const Header = () => (
   <Row>
-    <Col span={6}>
+    <Col offset={2} span={6}>
       <img
         className="header__logo"
         src={`${process.env.PUBLIC_URL}assets/images/jpg/payfazz.jpeg`}
