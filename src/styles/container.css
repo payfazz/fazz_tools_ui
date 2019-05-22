@@ -82,6 +82,11 @@ header {
     background-color: #ee192d;
     text-align: center;
     color: white;
+    position: fixed;
+    z-index: 3;
+    top: 0px;
+    left: 0px;
+    right: 0px;
 }
 
 /* override default class */
