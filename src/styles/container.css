@@ -13,6 +13,10 @@ header {
 }
 
 .header__logo {
+    padding: 0px 50px;
+}
+
+.header__logo__img {
     overflow: hidden;
     width: 40px;
     height: 40px;
