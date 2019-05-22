@@ -7,8 +7,8 @@ const ComingSoon = () => (
       <img
         src={`${process.env.PUBLIC_URL}assets/images/png/coming_soon.png`}
         alt="coming soon"
-        width={240}
-        height={240}
+        width={200}
+        height={200}
       />
       <h1>
         <b>Coming Soon</b>
