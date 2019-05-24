@@ -18,6 +18,7 @@
     "rxjs": "^6.5.2",
     "websocket": "^1.0.28"
   },
+  "homepage": "./",
   "main": "server/app/app.js",
   "scripts": {
     "start": "PORT=7072 react-scripts start",
