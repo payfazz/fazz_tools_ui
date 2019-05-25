@@ -17,7 +17,7 @@ function createWindow() {
   mainWindow = new BrowserWindow({ width: 900, height: 680 });
   mainWindow.loadURL(
     isDev
-      ? "http://localhost:3000"
+      ? "http://localhost:7072"
       : `file://${path.join(__dirname, "../build/index.html")}`
   );
 
