@@ -20,21 +20,19 @@
     "websocket": "^1.0.28"
   },
   "homepage": "./",
-  "main": "public/electron.js",
+  "main": "server/app/app.js",
   "scripts": {
     "start": "PORT=7072 react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "electron": "electron .",
     "electron-dev": "concurrently \"BROWSER=none npm run start\" \"wait-on http://localhost:7072 && electron .\"",
-    "electron-pack": "build -c.extraMetadata.main=build/electron.js",
+    "electron-pack": "build -c.extraMetadata.main=server/app/app.js",
     "preelectron-pack": "npm run build"
   },
   "build": {
     "appId": "com.example.electron-cra",
     "files": [
       "build/**/*",
+      "server/**/*",
       "node_modules/**/*"
     ],
     "directories": {

@@ -1,7 +1,7 @@
 require("dotenv").config();
-const config = require("./server/config/config");
-const createHTTPServer = require("./server/server/http");
-const createWebSocketServer = require("./server/server/ws");
+const config = require("../config/config");
+const createHTTPServer = require("../server/http");
+const createWebSocketServer = require("../server/ws");
 
 const electron = require("electron");
 const app = electron.app;
@@ -18,7 +18,7 @@ function createWindow() {
   mainWindow.loadURL(
     isDev
       ? "http://localhost:7072"
-      : `file://${path.join(__dirname, "../build/index.html")}`
+      : `file://${path.join(__dirname, "../../build/index.html")}`
   );
 
   const _server = createHTTPServer({
