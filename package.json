@@ -1,6 +1,7 @@
 {
-  "name": "client",
-  "version": "0.1.0",
+  "name": "fazz-tools-ui",
+  "description": "Flutter Debugging Tools",
+  "version": "1.0.0",
   "private": true,
   "author": "Azhar Prabudi A.K.A Kondel <azharprabui@gmail.com>",
   "dependencies": {
@@ -30,7 +31,6 @@
     "preelectron-pack": "npm run build"
   },
   "build": {
-    "appId": "com.example.electron-cra",
     "files": [
       "build/**/*",
       "server/**/*",
