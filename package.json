@@ -2,6 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
+  "author": "Azhar Prabudi A.K.A Kondel <azharprabui@gmail.com>",
   "dependencies": {
     "antd": "^3.18.1",
     "dotenv": "^8.0.0",
@@ -35,8 +36,29 @@
       "server/**/*",
       "node_modules/**/*"
     ],
-    "directories": {
-      "buildResources": "assets"
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "squirrel",
+      "icon": "build/icon.ico"
     }
   },
   "eslintConfig": {
