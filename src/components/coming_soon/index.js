@@ -5,7 +5,7 @@ const ComingSoon = () => (
   <Row type="flex" align="middle" justify="center">
     <Col>
       <img
-        src={`${process.env.PUBLIC_URL}assets/images/png/coming_soon.png`}
+        src={`${process.env.PUBLIC_URL}/assets/images/png/coming_soon.png`}
         alt="coming soon"
         width={200}
         height={200}

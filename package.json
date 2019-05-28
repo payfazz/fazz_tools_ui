@@ -1,10 +1,13 @@
 {
-  "name": "client",
-  "version": "0.1.0",
+  "name": "fazz-tools-ui",
+  "description": "Flutter Debugging Tools",
+  "version": "1.0.0",
   "private": true,
+  "author": "Azhar Prabudi A.K.A Kondel <azharprabui@gmail.com>",
   "dependencies": {
     "antd": "^3.18.1",
     "dotenv": "^8.0.0",
+    "electron-is-dev": "^1.1.0",
     "express": "^4.17.0",
     "moment": "^2.24.0",
     "prop-types": "^15.7.2",
@@ -18,13 +21,45 @@
     "rxjs": "^6.5.2",
     "websocket": "^1.0.28"
   },
+  "homepage": "./",
   "main": "server/app/app.js",
   "scripts": {
     "start": "PORT=7072 react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "electron": "electron ."
+    "electron-dev": "concurrently \"BROWSER=none npm run start\" \"wait-on http://localhost:7072 && electron .\"",
+    "electron-pack": "build -c.extraMetadata.main=server/app/app.js",
+    "preelectron-pack": "npm run build"
+  },
+  "build": {
+    "files": [
+      "build/**/*",
+      "server/**/*",
+      "node_modules/**/*"
+    ],
+    "dmg": {
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "squirrel",
+      "icon": "build/icon.ico"
+    }
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -42,6 +77,9 @@
     ]
   },
   "devDependencies": {
-    "electron": "^5.0.1"
+    "concurrently": "^4.1.0",
+    "electron": "^5.0.1",
+    "electron-builder": "^20.41.0",
+    "wait-on": "^3.2.0"
   }
 }

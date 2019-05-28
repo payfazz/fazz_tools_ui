@@ -5,7 +5,7 @@ const NotFound = () => (
   <Row type="flex" justify="center" align="middle">
     <Col>
       <img
-        src={`${process.env.PUBLIC_URL}assets/images/svg/no_data.svg`}
+        src={`${process.env.PUBLIC_URL}/assets/images/svg/no_data.svg`}
         width={200}
         height={200}
         alt={"no data"}
