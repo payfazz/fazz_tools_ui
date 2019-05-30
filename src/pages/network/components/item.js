@@ -75,7 +75,7 @@ class NetworkItem extends PureComponent {
       return this.props.responseBody;
     }
 
-    if (type === "object") {
+    if (type === "object" && this.props.responseBody != null) {
       return <JSONView src={this.props.responseBody} />;
     }
 
