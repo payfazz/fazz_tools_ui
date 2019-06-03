@@ -1,0 +1,18 @@
+.container-with-copy {
+    display: inline-block;
+    padding: 0px 0px 0px 10px
+}
+
+.container-with-copy__cursor {
+    cursor: pointer;
+    display: inline;
+}
+
+.container-with-copy__cursor__svg {
+    vertical-align: top;
+    color: rgb(38, 139,210);
+    font-size: 15px;
+    margin-right: 3px;
+    height: 1em;
+    width: 1em;
+}
