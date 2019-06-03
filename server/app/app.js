@@ -28,6 +28,10 @@ const createWindow = () => {
       : `file://${path.join(__dirname, "../../build/index.html")}`
   );
 
+  if (isDev) {
+    mainWindow.webContents.openDevTools();
+  }
+
   mainWindow.on("closed", () => {
     server = null;
     mainWindow = null;
