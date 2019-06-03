@@ -2,8 +2,11 @@
   "name": "fazz-tools-ui",
   "description": "Flutter Debugging Tools",
   "version": "1.0.0",
-  "private": true,
-  "author": "Azhar Prabudi A.K.A Kondel <azharprabui@gmail.com>",
+  "author": {
+    "name": "Team Payfazz",
+    "version": "1.0.0",
+    "email": "hantze.sudarma@cashfazz.com"
+  },
   "dependencies": {
     "antd": "^3.18.1",
     "dotenv": "^8.0.0",
@@ -24,10 +27,9 @@
   "homepage": "./",
   "main": "server/app/app.js",
   "scripts": {
-    "start": "PORT=7072 react-scripts start",
-    "build": "react-scripts build",
-    "electron-dev": "concurrently \"BROWSER=none npm run start\" \"wait-on http://localhost:7072 && electron .\"",
-    "electron-pack": "build -c.extraMetadata.main=server/app/app.js",
+    "dev": "concurrently \"BROWSER=none PORT=7072 react-scripts start\" \"wait-on http://localhost:7072 && electron .\"",
+    "dev:web": "concurrently \"node src/app/app.js\" \"BROWSER=none PORT=7072 react-scripts start\"",
+    "build": "build -c.extraMetadata.main=server/app/app.js",
     "preelectron-pack": "npm run build"
   },
   "build": {
@@ -80,6 +82,7 @@
     "concurrently": "^4.1.0",
     "electron": "^5.0.1",
     "electron-builder": "^20.41.0",
+    "typescript": "^3.5.1",
     "wait-on": "^3.2.0"
   }
 }
