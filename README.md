@@ -18,7 +18,7 @@ If the app doesnt support your operating system, you can build your own app or r
 1. Clone this repository using git or you can download it
 2. Go to project directory using terminal
 3. Run <pre>npm install</pre> at your terminal
-4. Run <pre>npm run build</pre>
+4. Run <pre>npm run electron-pack</pre>
 5. App already build, you can check inside dist folder
 
 # How To Running Locally ?
