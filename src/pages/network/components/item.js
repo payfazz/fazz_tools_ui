@@ -10,11 +10,19 @@ class NetworkItem extends PureComponent {
     for (const index in this.props.requestHeaders) {
       _components.push(
         <Row type="flex" key={index}>
-          <Col className="container-network__item__section-body__key" span={4}>
+          <Col
+            className="container-network__item__section-body__content"
+            span={4}
+          >
             {index}
           </Col>
           <Col span={2}>:</Col>
-          <Col span={18}>{this.props.requestHeaders[index]}</Col>
+          <Col
+            span={18}
+            className="container-network__item__section-body__content"
+          >
+            {this.props.requestHeaders[index]}
+          </Col>
         </Row>
       );
     }
@@ -27,11 +35,19 @@ class NetworkItem extends PureComponent {
     for (const index in this.props.params) {
       _components.push(
         <Row type="flex" key={index}>
-          <Col className="container-network__item__section-body__key" span={4}>
+          <Col
+            className="container-network__item__section-body__content"
+            span={4}
+          >
             {index}
           </Col>
           <Col span={2}>:</Col>
-          <Col span={18}>{this.props.params[index]}</Col>
+          <Col
+            span={18}
+            className="container-network__item__section-body__content"
+          >
+            {this.props.params[index]}
+          </Col>
         </Row>
       );
     }
@@ -60,11 +76,19 @@ class NetworkItem extends PureComponent {
     for (const index in this.props.responseHeaders) {
       _components.push(
         <Row type="flex" key={index}>
-          <Col className="container-network__item__section-body__key" span={4}>
+          <Col
+            className="container-network__item__section-body__content"
+            span={4}
+          >
             {index}
           </Col>
           <Col span={2}>:</Col>
-          <Col span={18}>{this.props.responseHeaders[index]}</Col>
+          <Col
+            span={18}
+            className="container-network__item__section-body__content"
+          >
+            {this.props.responseHeaders[index]}
+          </Col>
         </Row>
       );
     }
@@ -96,7 +120,7 @@ class NetworkItem extends PureComponent {
           <Col className="container-network__item__section-body">
             <Row type="flex">
               <Col
-                className="container-network__item__section-body__key"
+                className="container-network__item__section-body__content"
                 span={4}
               >
                 Url
@@ -106,7 +130,7 @@ class NetworkItem extends PureComponent {
             </Row>
             <Row type="flex">
               <Col
-                className="container-network__item__section-body__key"
+                className="container-network__item__section-body__content"
                 span={4}
               >
                 Status code
