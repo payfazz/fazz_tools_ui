@@ -71,7 +71,11 @@ class NetworkItem extends PureComponent {
 
   _renderResponseBody = () => {
     const type = typeof this.props.responseBody;
-    if (type === "boolean" || type === "string" || type === "number") {
+    if (
+      type === "boolean" ||
+      type === "string" ||
+      (type === "number" && this.props.responseBody != null)
+    ) {
       return this.props.responseBody;
     }
 
