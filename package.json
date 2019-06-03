@@ -28,7 +28,6 @@
   "main": "server/app/app.js",
   "scripts": {
     "dev": "concurrently \"BROWSER=none PORT=7072 react-scripts start\" \"wait-on http://localhost:7072 && electron .\"",
-    "dev:web": "concurrently \"node src/app/app.js\" \"BROWSER=none PORT=7072 react-scripts start\"",
     "build": "build -c.extraMetadata.main=server/app/app.js",
     "preelectron-pack": "npm run build"
   },
