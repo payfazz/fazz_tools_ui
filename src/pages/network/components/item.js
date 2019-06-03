@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import { Row, Col } from "antd";
 import PropTypes from "prop-types";
 import JSONView from "react-json-view";
+import WithCopy from "../../../components/with_copy";
 import "../../../styles/network.css";
 
 class NetworkItem extends PureComponent {
@@ -21,7 +22,7 @@ class NetworkItem extends PureComponent {
             span={18}
             className="container-network__item__section-body__content"
           >
-            {this.props.requestHeaders[index]}
+            <WithCopy text={this.props.requestHeaders[index]} />
           </Col>
         </Row>
       );
@@ -46,7 +47,7 @@ class NetworkItem extends PureComponent {
             span={18}
             className="container-network__item__section-body__content"
           >
-            {this.props.params[index]}
+            <WithCopy text={this.props.params[index]} />
           </Col>
         </Row>
       );
@@ -87,7 +88,7 @@ class NetworkItem extends PureComponent {
             span={18}
             className="container-network__item__section-body__content"
           >
-            {this.props.responseHeaders[index]}
+            <WithCopy text={this.props.responseHeaders[index]} />
           </Col>
         </Row>
       );
@@ -126,7 +127,9 @@ class NetworkItem extends PureComponent {
                 Url
               </Col>
               <Col span={2}>:</Col>
-              <Col span={18}>{this.props.url}</Col>
+              <Col span={18}>
+                <WithCopy text={this.props.url} />
+              </Col>
             </Row>
             <Row type="flex">
               <Col
@@ -136,7 +139,9 @@ class NetworkItem extends PureComponent {
                 Status code
               </Col>
               <Col span={2}>:</Col>
-              <Col span={18}>{this.props.statusCode}</Col>
+              <Col span={18}>
+                <WithCopy text={this.props.statusCode} />
+              </Col>
             </Row>
           </Col>
         </Col>
