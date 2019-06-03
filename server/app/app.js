@@ -1,4 +1,5 @@
 require("dotenv").config();
+
 const config = require("../config/config");
 const createHTTPServer = require("../server/http");
 const createWebSocketServer = require("../server/ws");
@@ -7,8 +8,8 @@ const isDev = require("electron-is-dev");
 const electron = require("electron");
 const { app, BrowserWindow } = electron;
 
-let mainWindow;
 let server;
+let mainWindow;
 
 const createServer = () => {
   server = createHTTPServer({
@@ -27,10 +28,6 @@ const createWindow = () => {
       ? `http://localhost:${process.env.FAZZ_DEBUGGER_PORT_UI}`
       : `file://${path.join(__dirname, "../../build/index.html")}`
   );
-
-  if (isDev) {
-    mainWindow.webContents.openDevTools();
-  }
 
   mainWindow.on("closed", () => {
     server = null;

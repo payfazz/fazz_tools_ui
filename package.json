@@ -25,12 +25,12 @@
     "rxjs": "^6.5.2",
     "websocket": "^1.0.28"
   },
-  "homepage": "./",
+  "homepage": ".",
   "main": "server/app/app.js",
   "scripts": {
-    "dev": "concurrently \"BROWSER=none PORT=7072 react-scripts start\" \"wait-on http://localhost:7072 && electron .\"",
-    "build": "build -c.extraMetadata.main=server/app/app.js",
-    "preelectron-pack": "npm run build"
+    "start": "concurrently \"BROWSER=none PORT=7072 react-scripts start\" \"wait-on http://localhost:7072 && electron .\"",
+    "preelectron-pack": "concurrently \"rimraf ./build ./dist\" \"react-scripts build\"",
+    "electron-pack": "build -c.extraMetadata.main=./server/app/app.js"
   },
   "build": {
     "files": [
@@ -82,6 +82,8 @@
     "concurrently": "^4.1.0",
     "electron": "^5.0.1",
     "electron-builder": "^20.41.0",
+    "electron-builder-squirrel-windows": "^20.42.0",
+    "rimraf": "^2.6.3",
     "typescript": "^3.5.1",
     "wait-on": "^3.2.0"
   }
