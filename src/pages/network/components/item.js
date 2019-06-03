@@ -41,11 +41,14 @@ class NetworkItem extends PureComponent {
 
   _renderRequestBody = () => {
     const type = typeof this.props.body;
-    if (type === "boolean" || type === "string" || type === "number") {
+    if (
+      (type === "boolean" || type === "string" || type === "number") &&
+      this.props.body !== null
+    ) {
       return this.props.body;
     }
 
-    if (type === "object") {
+    if (type === "object" && this.props.body !== null) {
       return <JSONView src={this.props.body} />;
     }
 
@@ -72,9 +75,8 @@ class NetworkItem extends PureComponent {
   _renderResponseBody = () => {
     const type = typeof this.props.responseBody;
     if (
-      type === "boolean" ||
-      type === "string" ||
-      (type === "number" && this.props.responseBody != null)
+      (type === "boolean" || type === "string" || type === "number") &&
+      this.props.responseBody != null
     ) {
       return this.props.responseBody;
     }
